@@ -58,6 +58,23 @@
               </v-text-field>
             </v-flex>
           </v-layout>
+          <v-layout row>
+            <v-flex xs12 sm6 offset-sm3 class="mb-2">
+              <h4>Choose a Data & Time</h4>
+            </v-flex>
+          </v-layout>
+          <v-layout row>
+            <v-flex xs12 sm6 offset-sm3>
+              <v-date-picker v-model="date"></v-date-picker>
+              <p>{{date}}</p>
+            </v-flex>
+          </v-layout>
+          <v-layout row>
+            <v-flex xs12 sm6 offset-sm3>
+              <v-time-picker v-model="time" format="24hr"></v-time-picker>
+              <p>{{time}}</p>
+            </v-flex>
+          </v-layout>
           <v-layout>
             <v-flex xs12 sm6 offset-sm3>
               <v-btn
@@ -75,13 +92,17 @@
 </template>
 
 <script>
+  import moment from 'moment'
+
   export default {
     data () {
       return {
         title: '',
         location: '',
         imageUrl: '',
-        description: ''
+        description: '',
+        date: moment().format('YYYY-MM-DD'),
+        time: moment().format('h:mm')
       }
     },
     computed: {
@@ -102,7 +123,7 @@
           location: this.location,
           imageUrl: this.imageUrl,
           description: this.description,
-          date: new Date()
+          date: moment().format(this.date + ' ' + this.time)
         }
         this.$store.dispatch('createMeetup', meetupData)
         this.$router.push('/meetups')
