@@ -69,7 +69,6 @@ export default {
   methods: {
     onSaveChanges () {
       if (this.editedTitle.trim() === '' || this.editedDescription.trim() === '') {
-        console.log('cant touch this')
         return
       }
       this.$store.dispatch('updateMeetupData', {
@@ -77,7 +76,6 @@ export default {
         title: this.editedTitle,
         description: this.editedDescription
       })
-      console.log('cant touch this 2')
       this.editDialog = false
     }
   }
