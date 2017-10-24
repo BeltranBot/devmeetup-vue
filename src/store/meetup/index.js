@@ -108,8 +108,6 @@ export default {
         .catch((err) => {
           console.log(err)
         })
-      // Reach out to  firebase and store it
-      commit('createMeetup', meetup)
     },
     updateMeetupData ({ commit }, payload) {
       commit('setLoading', true)
