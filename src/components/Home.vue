@@ -49,7 +49,6 @@
 export default {
   methods: {
     onLoadMeetup (id) {
-      console.log('hello world')
       this.$router.push('/meetups/' + id)
     }
   },
